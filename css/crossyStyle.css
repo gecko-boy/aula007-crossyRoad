@@ -1,0 +1,13 @@
+canvas {
+    width: 100%;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    color: orange;
+    background-color: rgb(121, 251, 255);
+    margin-top: 5px;
+    padding: 20px;
+    font-size: 50px;
+}
