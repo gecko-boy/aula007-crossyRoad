@@ -1,11 +1,13 @@
 export default class Car extends Phaser.GameObjects.Sprite {
-    contructor (scene, x, y, texture, flipped) {
-        super(scene, x, y, texture);
+    constructor (scene, x, y, texture, flipped) {
+        super(scene, x, y, texture)
 
         this.setPosition(x, y);
         this.setFlip(flipped, false);
 
-        this.speed = 3;
+        let minSpeed = 3;
+        let maxSpeed = 12;
+        this.speed = minSpeed + Math.random() * (maxSpeed - minSpeed);
     }
 
     update(time)
@@ -16,5 +18,12 @@ export default class Car extends Phaser.GameObjects.Sprite {
         }
 
         this.x += this.flipX === true ? this.speed : - this.speed;
+    }
+
+    overlaps(otherObject) {
+        let otherColl = otherObject.getBounds();
+        let myColl = this.getBounds();
+
+        return Phaser.Geom.Intersects.RectangleToRectangle(otherColl, myColl);
     }
 }
